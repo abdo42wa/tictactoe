@@ -1,14 +1,11 @@
 import React from 'react'
 import type { PropsWithChildren } from 'react'
-import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import FontAwesome from '@react-native-vector-icons/fontawesome';
 
 type IconProps = PropsWithChildren<{
     name: string
 }>
 
-// circle => circle-thin  cross => times default => Pencil
 export const Icons = ({ name }: IconProps) => {
 
     switch (name) {
