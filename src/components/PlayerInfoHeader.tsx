@@ -1,14 +1,9 @@
 import { View, Text } from 'react-native'
 import React, { PropsWithChildren } from 'react'
 import { styles } from '../style'
+import { TPlayerInfoHeaderProps } from '../types'
 
-
-type IPlayerInfoHeaderProps = PropsWithChildren<{
-    gameWinner: string,
-    isCross: boolean
-}>
-
-export const PlayerInfoHeader = ({ gameWinner, isCross }: IPlayerInfoHeaderProps) => {
+export const PlayerInfoHeader = ({ gameWinner, isCross }: TPlayerInfoHeaderProps) => {
     return (
         <View>
             {gameWinner ? (

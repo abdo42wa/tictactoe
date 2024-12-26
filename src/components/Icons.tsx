@@ -1,12 +1,8 @@
 import React from 'react'
-import type { PropsWithChildren } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { TIconProps } from '../types';
 
-type IIconProps = PropsWithChildren<{
-    name: string
-}>
-
-export const Icons = ({ name }: IIconProps) => {
+export const Icons = ({ name }: TIconProps) => {
 
     switch (name) {
         case 'circle':

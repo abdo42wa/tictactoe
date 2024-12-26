@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -8,18 +8,16 @@ import {
 import { styles } from './style';
 import { PlayerInfoHeader } from './components/PlayerInfoHeader';
 import { GridList } from './components/GridList';
+import { useGameLogic } from './hooks/useGameLogic';
 
 export const App = (): React.JSX.Element => {
-
-  const [isCross, setIsCross] = useState<boolean>(false)
-  const [gameWinner, setGameWinner] = useState<string>('')
-  const [gameState, setGameState] = useState(new Array(9).fill('empty', 0, 9))
-
-  const reloadGame = () => {
-    setIsCross(false)
-    setGameWinner('')
-    setGameState(new Array(9).fill('empty', 0, 9))
-  }
+  const {
+    isCross,
+    gameWinner,
+    gameState,
+    handleMove,
+    reloadGame
+  } = useGameLogic()
 
   return (
     <SafeAreaView>
@@ -27,7 +25,11 @@ export const App = (): React.JSX.Element => {
 
       <PlayerInfoHeader gameWinner={gameWinner} isCross={isCross} />
 
-      <GridList gameState={gameState} gameWinner={gameWinner} isCross={isCross} setGameWinner={setGameWinner} setIsCross={setIsCross} />
+      <GridList
+        gameState={gameState}
+        gameWinner={gameWinner}
+        onMove={handleMove}
+      />
 
       <Pressable style={styles.gameBtn}
         onPress={reloadGame}>

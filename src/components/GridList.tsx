@@ -1,21 +1,26 @@
 import { View, FlatList, Pressable } from 'react-native'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import { Icons } from './Icons'
 import Snackbar from 'react-native-snackbar'
 import { checkGameWinner } from '../utils/checkGameWinner'
 import { styles } from '../style'
+import { GAME_SYMBOLS, TGridListProps } from '../types'
+import { GRID_COLUMNS } from '../consts'
+import { useGameLogic } from '../hooks/useGameLogic'
 
-type IGridListProps = PropsWithChildren<{
-    gameWinner: string
-    gameState: any[],
-    setIsCross: React.Dispatch<React.SetStateAction<boolean>>
-    isCross: boolean,
-    setGameWinner: any
-}>
+export const GridList = ({ gameWinner, gameState, onMove }: TGridListProps) => {
+    const {
+        handleMove,
+    } = useGameLogic()
+    const handlePress = (position: number) => {
+        if (gameState[position] !== 'empty') {
+            return Snackbar.show({
+                text: 'Position is already filled',
+                backgroundColor: '#ff0000',
+                textColor: '#FFFFFF'
+            })
+        }
 
-export const GridList = ({ gameWinner, gameState, setIsCross, isCross, setGameWinner }: IGridListProps) => {
-
-    const onItemPress = (itemNumber: number) => {
         if (gameWinner) {
             return Snackbar.show({
                 text: gameWinner,
@@ -23,30 +28,21 @@ export const GridList = ({ gameWinner, gameState, setIsCross, isCross, setGameWi
                 textColor: '#FFFFFF'
             })
         }
-
-        if (gameState[itemNumber] === 'empty') {
-            gameState[itemNumber] = isCross ? 'cross' : 'circle'
-            setIsCross(!isCross)
-        } else {
-            return Snackbar.show({
-                text: 'position is already filled',
-                backgroundColor: '#ff0000',
-                textColor: '#FFFFFF'
-            })
-        }
-        checkGameWinner({ gameState, setGameWinner })
+        onMove(position)
     }
     return (
         <View>
             <FlatList
-                numColumns={3}
+                numColumns={GRID_COLUMNS}
                 data={gameState}
                 style={styles.grid}
                 renderItem={({ item, index }) => (
                     <Pressable
                         key={index}
                         style={styles.card}
-                        onPress={() => onItemPress(index)}
+                        onPress={() => handlePress(index)}
+                        accessibilityLabel={`Game cell ${index + 1}, current value: ${item}`}
+                        accessibilityRole="button"
                     >
                         <Icons name={item} />
                     </Pressable>
