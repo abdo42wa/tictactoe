@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import { styles } from '../style'
 import { TPlayerInfoHeaderProps } from '../types'
 
