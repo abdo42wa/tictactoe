@@ -16,7 +16,8 @@ export type TGridListProps = PropsWithChildren<{
 
 export type TCheckGameWinnerProps = PropsWithChildren<{
     setGameWinner: React.Dispatch<React.SetStateAction<string>>
-    gameState: GameState
+    gameState: GameState,
+    updateScores?: (winner: 'cross' | 'circle' | 'draws') => void
 }>
 
 export type TPlayerInfoHeaderProps = PropsWithChildren<{
@@ -27,3 +28,14 @@ export type TPlayerInfoHeaderProps = PropsWithChildren<{
 export type TIconProps = PropsWithChildren<{
     name: string
 }>
+
+export type TGameScores = {
+    cross: number
+    circle: number
+    draws: number
+}
+
+export type TScoreBoardProps = {
+    scores: TGameScores
+    onReset: () => void
+}

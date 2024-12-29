@@ -70,4 +70,38 @@ export const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: '500',
     },
+    scoreBoard: {
+        padding: 20,
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10,
+        marginVertical: 20,
+    },
+    scoreContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 15,
+    },
+    scoreItem: {
+        alignItems: 'center',
+    },
+    scoreLabel: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
+    scoreValue: {
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    resetButton: {
+        backgroundColor: '#ff6b6b',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    resetButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });

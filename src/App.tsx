@@ -9,6 +9,7 @@ import { styles } from './style';
 import { PlayerInfoHeader } from './components/PlayerInfoHeader';
 import { GridList } from './components/GridList';
 import { useGameLogic } from './hooks/useGameLogic';
+import { ScoreBoard } from './components/ScoreBoard';
 
 export const App = (): React.JSX.Element => {
   const {
@@ -16,7 +17,9 @@ export const App = (): React.JSX.Element => {
     gameWinner,
     gameState,
     handleMove,
-    reloadGame
+    reloadGame,
+    scores,
+    resetScores
   } = useGameLogic()
 
   return (
@@ -24,6 +27,11 @@ export const App = (): React.JSX.Element => {
       <StatusBar />
 
       <PlayerInfoHeader gameWinner={gameWinner} isCross={isCross} />
+
+      <ScoreBoard
+        scores={scores}
+        onReset={resetScores}
+      />
 
       <GridList
         gameState={gameState}
