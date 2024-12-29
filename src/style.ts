@@ -72,9 +72,11 @@ export const styles = StyleSheet.create({
     },
     scoreBoard: {
         padding: 20,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#282C33',
         borderRadius: 10,
         marginVertical: 20,
+        marginHorizontal: 15,
+
     },
     scoreContainer: {
         flexDirection: 'row',
@@ -88,10 +90,12 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,
+        color: '#FFFFFF'
     },
     scoreValue: {
         fontSize: 24,
         fontWeight: 'bold',
+        color: '#FFFFFF'
     },
     resetButton: {
         backgroundColor: '#ff6b6b',

@@ -28,9 +28,13 @@ export const useGameLogic = () => {
             setGameState(newGameState)
             setIsCross(!isCross)
 
-            checkGameWinner({ gameState, setGameWinner, updateScores })
+            checkGameWinner({
+                gameState: newGameState,
+                setGameWinner,
+                updateScores
+            })
         }
-    }, [gameState, isCross, gameWinner])
+    }, [gameState, isCross, gameWinner, updateScores])
 
     const resetScores = useCallback(() => {
         setScores({
